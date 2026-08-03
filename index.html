@@ -51,6 +51,21 @@
             0% { transform: translateY(0px) translateX(0px) scale(1); }
             100% { transform: translateY(-70px) translateX(-50px) scale(1.2); }
         }
+        /* Perbaikan Logo: Proporsional, pas, tidak terpotong */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+        .logo-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
     </style>
 </head>
 <body class="animated-bg text-slate-800 min-h-screen flex items-center justify-center p-4">
@@ -62,9 +77,11 @@
                 <i class="fa-solid fa-shield-halved"></i> Secure High-Level v2026
             </div>
             
-            <!-- Logo Resmi Provinsi Sulawesi Tengah (logo_sulteng.png) -->
+            <!-- Logo Resmi Provinsi Sulawesi Tengah (logo_sulteng.png) - Proporsional & Tidak Terpotong -->
             <div class="flex justify-center mb-1">
-                <img src="logo_sulteng.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png'" alt="Logo Sulawesi Tengah" class="w-16 h-20 object-contain drop-shadow-md">
+                <div class="logo-wrapper w-16 h-20">
+                    <img src="logo_sulteng.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png'" alt="Logo Sulawesi Tengah">
+                </div>
             </div>
 
             <h2 class="font-extrabold text-xl tracking-wide bg-gradient-to-r from-white via-blue-100 to-slate-300 bg-clip-text text-transparent">E-MANER 2026 PORTAL</h2>
@@ -145,8 +162,9 @@
         <header class="bg-blue-950 text-white shadow-xl sticky top-0 z-50 border-b border-blue-900">
             <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-white p-1 rounded-xl shadow-lg border border-blue-800 flex items-center justify-center w-10 h-10">
-                        <img src="logo_sulteng.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png'" alt="Logo" class="w-8 h-8 object-contain">
+                    <!-- Logo Header Aman & Proporsional -->
+                    <div class="bg-white/10 p-1.5 rounded-xl shadow-lg border border-blue-800 logo-wrapper">
+                        <img src="logo_sulteng.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png'" alt="Logo">
                     </div>
                     <div>
                         <h1 class="font-extrabold text-base sm:text-lg tracking-wide bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent">E-MANER 2026</h1>
@@ -157,9 +175,9 @@
                     <span id="sync-status" class="text-xs px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 font-medium">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Keamanan Aktif
                     </span>
-                    <!-- Tombol Kelola User & Ubah PIN Langsung di Aplikasi -->
+                    <!-- Tombol Kelola User, Ubah PIN, & Username Instansi Langsung di Aplikasi -->
                     <button onclick="openMasterDatabaseModal()" class="bg-blue-900 hover:bg-blue-800 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md border border-blue-700">
-                        <i class="fa-solid fa-users-gear text-amber-400"></i> Kelola User & PIN
+                        <i class="fa-solid fa-users-gear text-amber-400"></i> Kelola User, PIN & Instansi
                     </button>
                     <!-- Tombol Export Excel Aman (Kredensial Dihilangkan Total demi Keamanan Data) -->
                     <button onclick="exportCleanMasterExcel()" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
@@ -281,17 +299,17 @@
                 <div class="flex items-center space-x-3">
                     <div class="bg-blue-900 p-2 rounded-xl border border-blue-700"><i class="fa-solid fa-users-gear text-amber-400"></i></div>
                     <div>
-                        <h3 class="font-bold text-base">Manajemen User, PIN Keamanan, & Master Database</h3>
+                        <h3 class="font-bold text-base">Manajemen User, PIN Keamanan, & Username Instansi</h3>
                         <p class="text-xs text-blue-200">INSPEKTORAT Provinsi Sulawesi Tengah</p>
                     </div>
                 </div>
                 <button onclick="closeMasterDatabaseModal()" class="text-blue-200 hover:text-white text-lg px-2"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="p-6 overflow-y-auto space-y-6 flex-grow bg-slate-50" id="master-db-content">
-                <!-- Konten dinamis manajemen user & PIN -->
+                <!-- Konten dinamis manajemen user, PIN & Username Instansi -->
             </div>
             <div class="p-4 bg-white border-t border-slate-200 text-right flex justify-between items-center">
-                <span class="text-xs text-slate-500 italic"><i class="fa-solid fa-shield-halved mr-1 text-emerald-600"></i> Kredensial login dikelola aman di dalam aplikasi lokal (dihilangkan dari export Excel).</span>
+                <span class="text-xs text-slate-500 italic"><i class="fa-solid fa-shield-halved mr-1 text-emerald-600"></i> Kredensial login & instansi dikelola aman di dalam aplikasi lokal (dihilangkan dari export Excel).</span>
                 <button onclick="closeMasterDatabaseModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2 rounded-xl font-semibold">Tutup</button>
             </div>
         </div>
@@ -324,7 +342,8 @@
             kepala: "Dr. H. Muchlis, M.Si., CFrA",
             nip: "19701231 199503 1 001",
             jabatan: "Inspektur Daerah Provinsi Sulawesi Tengah",
-            pangkat: "Pembina Utama Madya / IV/d"
+            pangkat: "Pembina Utama Madya / IV/d",
+            usernameInstansi: "inspektorat_sulteng"
         };
 
         const SHEET_SCHEMAS = {
@@ -666,7 +685,7 @@
             updateSystemStats();
         }
 
-        // Fungsionalitas Import Excel Sesuai Kolom Formulir (Terbaca Sempurna Saat Di-import)
+        // Fungsionalitas Import Excel Akurat & Kompatibel dengan Skema Formulir Aktif
         function importFormExcel(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -692,11 +711,17 @@
                     jsonRows.forEach(row => {
                         let newRecord = { id: Date.now().toString() + Math.random().toString(36).substr(2, 4) };
                         schema.columns.forEach(col => {
-                            // Pencocokan fleksibel key maupun label header Excel
+                            // Pencocokan fleksibel key maupun label header Excel agar terbaca sempurna
                             let val = row[col.label] !== undefined ? row[col.label] : 
                                       (row[col.key] !== undefined ? row[col.key] : 
                                       (row[col.label.toLowerCase()] !== undefined ? row[col.label.toLowerCase()] : ""));
-                            newRecord[col.key] = String(val);
+                            
+                            // Jika pencocokan langsung kosong, coba cari key yang mengandung substring key skema
+                            if (val === "" || val === undefined) {
+                                const foundKey = Object.keys(row).find(k => k.toLowerCase().includes(col.key.toLowerCase()) || k.toLowerCase().includes(col.label.toLowerCase()));
+                                if (foundKey) val = row[foundKey];
+                            }
+                            newRecord[col.key] = String(val !== undefined && val !== null ? val : "");
                         });
                         
                         if (!appDatabase[currentFormKey]) appDatabase[currentFormKey] = [];
@@ -810,20 +835,41 @@
 
         function deleteRecord(id) {
             if (confirm("Hapus data dari sistem?")) {
-                appDatabase[currentFormKey] = appDatabase[current_form_key || currentFormKey].filter(i => i.id !== id);
+                appDatabase[currentFormKey] = appDatabase[currentFormKey].filter(i => i.id !== id);
                 saveToLocalStorage();
                 renderTable();
                 updateSystemStats();
             }
         }
 
-        // Fungsionalitas Kelola User & Ubah PIN Langsung di Aplikasi
+        // Fungsionalitas Kelola User, Ubah PIN, & Username Instansi Langsung di Aplikasi
         function openMasterDatabaseModal() {
             const modal = document.getElementById('master-db-modal');
             const content = document.getElementById('master-db-content');
             content.innerHTML = '';
 
-            // Bagian Tabel User & PIN
+            // Bagian Pengaturan Username Instansi
+            const instansiMgmtDiv = document.createElement('div');
+            instansiMgmtDiv.className = "bg-white p-5 rounded-2xl border border-slate-300 shadow-sm space-y-3";
+            instansiMgmtDiv.innerHTML = `
+                <h5 class="font-bold text-slate-900 text-xs uppercase tracking-wider"><i class="fa-solid fa-building-columns text-blue-900 mr-2"></i> Pengaturan Username / Identitas Instansi</h5>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Username / Kode Instansi</label>
+                        <input type="text" id="modal-username-instansi" value="${dinasProfile.usernameInstansi || 'inspektorat_sulteng'}" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-semibold bg-slate-50 focus:bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Nama Instansi Resmi</label>
+                        <input type="text" id="modal-nama-instansi" value="${dinasProfile.jabatan}" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-semibold bg-slate-50 focus:bg-white">
+                    </div>
+                </div>
+                <div class="text-right pt-2">
+                    <button onclick="saveInstansiSettings()" class="bg-blue-950 hover:bg-blue-900 text-white text-xs px-4 py-2 rounded-xl font-semibold"><i class="fa-solid fa-floppy-disk mr-1"></i> Simpan Instansi</button>
+                </div>
+            `;
+            content.appendChild(instansiMgmtDiv);
+
+            // Bagian Tabel User & Ubah PIN
             const userMgmtDiv = document.createElement('div');
             userMgmtDiv.className = "bg-white p-5 rounded-2xl border border-slate-300 shadow-sm space-y-4";
             
@@ -842,7 +888,7 @@
 
             userMgmtDiv.innerHTML = `
                 <div class="flex justify-between items-center">
-                    <h5 class="font-bold text-slate-900 text-xs uppercase tracking-wider"><i class="fa-solid fa-shield-keyhole text-blue-900 mr-2"></i> Pengaturan & Manajemen User & PIN Keamanan</h5>
+                    <h5 class="font-bold text-slate-900 text-xs uppercase tracking-wider"><i class="fa-solid fa-shield-keyhole text-blue-900 mr-2"></i> Daftar User & Ubah PIN Keamanan</h5>
                     <button onclick="addNewUserPrompt()" class="bg-blue-950 hover:bg-blue-900 text-white text-[11px] px-3 py-1.5 rounded-xl font-semibold"><i class="fa-solid fa-user-plus mr-1"></i> Tambah User Baru</button>
                 </div>
                 ${userTableHtml}
@@ -888,6 +934,16 @@
             document.getElementById('master-db-modal').classList.remove('flex');
         }
 
+        function saveInstansiSettings() {
+            const uInst = document.getElementById('modal-username-instansi').value.trim();
+            const nInst = document.getElementById('modal-nama-instansi').value.trim();
+            if (uInst) dinasProfile.usernameInstansi = uInst;
+            if (nInst) dinasProfile.jabatan = nInst;
+            saveToLocalStorage();
+            alert("Username dan nama instansi berhasil diperbarui!");
+            openMasterDatabaseModal();
+        }
+
         function editUserCredential(id) {
             const userObj = credentialsSheet.find(c => c.id === id);
             if (!userObj) return;
@@ -923,8 +979,9 @@
         function exportCleanMasterExcel() {
             const wb = XLSX.utils.book_new();
             
-            // Biodata Instansi / Pimpinan
+            // Biodata Instansi / Pimpinan (Tanpa Kredensial Login/PIN)
             const dinasWsData = [{
+                "Username Instansi": dinasProfile.usernameInstansi || "inspektorat_sulteng",
                 "Nama Kepala Dinas / Inspektur": dinasProfile.kepala,
                 "NIP Kepala Dinas / Inspektur": dinasProfile.nip,
                 "Jabatan Resmi": dinasProfile.jabatan,
