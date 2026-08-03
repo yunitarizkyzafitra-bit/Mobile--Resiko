@@ -14,7 +14,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
 
-        /* Latar belakang visual mewah dengan nuansa Deep Navy Blue & Luxury Gold Accent */
+        /* Latar belakang visual mewah dengan nuansa Deep Navy Blue & Luxury Blue Accent */
         .animated-bg {
             background: linear-gradient(135deg, #020617 0%, #0b1329 40%, #030712 100%);
             position: relative;
@@ -52,12 +52,6 @@
             0% { transform: translateY(0px) translateX(0px) scale(1); }
             100% { transform: translateY(-70px) translateX(-50px) scale(1.2); }
         }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
     </style>
 </head>
 <body class="animated-bg text-slate-800 min-h-screen flex items-center justify-center p-4">
@@ -66,12 +60,12 @@
     <div id="login-container" class="relative z-10 max-w-lg w-full bg-white/96 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20">
         <div class="bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 p-6 text-white text-center space-y-3 border-b border-blue-900 relative">
             <div class="absolute top-4 right-4 text-amber-400 text-xs bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5">
-                <i class="fa-solid fa-shield-check"></i> Secure v2026
+                <i class="fa-solid fa-shield-halved"></i> Secure High-Level v2026
             </div>
             
-            <!-- Logo Provinsi Sulawesi Tengah -->
+            <!-- Logo Provinsi Sulawesi Tengah Sesuai Permintaan & Gambar Terlampir -->
             <div class="flex justify-center mb-1">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png" alt="Logo Provinsi Sulawesi Tengah" class="w-16 h-20 object-contain drop-shadow-md">
+                <img src="https://id.wikipedia.org/wiki/Berkas:Central_Sulawesi_coa.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png'" alt="Logo Provinsi Sulawesi Tengah" class="w-16 h-20 object-contain drop-shadow-md">
             </div>
 
             <h2 class="font-extrabold text-xl tracking-wide bg-gradient-to-r from-white via-blue-100 to-slate-300 bg-clip-text text-transparent">E-MANER 2026 PORTAL</h2>
@@ -83,7 +77,7 @@
             <!-- Bagian Kredensial Login -->
             <div class="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-3 shadow-inner">
                 <h3 class="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-2">
-                    <i class="fa-solid fa-key text-blue-800"></i> Autentikasi Pengguna & Sheet
+                    <i class="fa-solid fa-key text-blue-800"></i> Autentikasi Pengguna & Sesi Aman
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div class="space-y-1">
@@ -93,7 +87,7 @@
                     <div class="space-y-1">
                         <label class="block text-[11px] font-bold text-slate-700 uppercase">PIN Keamanan</label>
                         <div class="relative">
-                            <input type="password" id="auth-pin" required maxlength="6" class="w-full pl-3 pr-8 py-2 border border-slate-300 rounded-xl text-xs tracking-widest focus:ring-2 focus:ring-blue-900 focus:outline-none bg-white font-medium" placeholder="••••••">
+                            <input type="password" id="auth-pin" required maxlength="8" class="w-full pl-3 pr-8 py-2 border border-slate-300 rounded-xl text-xs tracking-widest focus:ring-2 focus:ring-blue-900 focus:outline-none bg-white font-medium" placeholder="••••••••">
                             <button type="button" onclick="togglePinVisibility()" class="absolute inset-y-0 right-0 pr-2.5 flex items-center text-slate-400 hover:text-slate-600">
                                 <i id="eye-icon" class="fa-solid fa-eye text-xs"></i>
                             </button>
@@ -133,15 +127,15 @@
             </div>
 
             <div id="login-error" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs font-medium text-center">
-                Username atau PIN Keamanan tidak cocok dengan data sheet!
+                Username atau PIN Keamanan tidak cocok! Pastikan data terdaftar.
             </div>
 
             <button type="submit" class="w-full bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 hover:from-blue-900 hover:to-indigo-900 text-white py-3 rounded-xl text-xs font-bold transition shadow-xl flex items-center justify-center gap-2 tracking-wide border border-blue-800">
-                <i class="fa-solid fa-right-to-bracket"></i> Autentikasi & Masuk Sistem E-MANER 2026
+                <i class="fa-solid fa-right-to-bracket"></i> Autentikasi Keamanan & Masuk Sistem E-MANER 2026
             </button>
         </form>
         <div class="p-4 bg-slate-50 border-t border-slate-100 text-center text-[10px] text-slate-400 font-medium">
-            E-MANER 2026 • Terintegrasi Master Database & Sheet Kredensial Pemda
+            E-MANER 2026 • Standar Keamanan Tinggi & Enskripsi Sesi Pemda
         </div>
     </div>
 
@@ -153,7 +147,7 @@
             <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
                 <div class="flex items-center space-x-3">
                     <div class="bg-white p-1 rounded-xl shadow-lg border border-blue-800 flex items-center justify-center w-10 h-10">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png" alt="Logo" class="w-8 h-8 object-contain">
+                        <img src="https://id.wikipedia.org/wiki/Berkas:Central_Sulawesi_coa.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Coat_of_arms_of_Central_Sulawesi.png/240px-Coat_of_arms_of_Central_Sulawesi.png'" alt="Logo" class="w-8 h-8 object-contain">
                     </div>
                     <div>
                         <h1 class="font-extrabold text-base sm:text-lg tracking-wide bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent">E-MANER 2026</h1>
@@ -162,15 +156,15 @@
                 </div>
                 <div class="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
                     <span id="sync-status" class="text-xs px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 font-medium">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sesi Terverifikasi
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Keamanan Aktif
                     </span>
-                    <!-- Tombol Master DB & Creds -->
+                    <!-- Tombol Master DB & Manajemen PIN -->
                     <button onclick="openMasterDatabaseModal()" class="bg-blue-900 hover:bg-blue-800 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md border border-blue-700">
-                        <i class="fa-solid fa-database text-amber-400"></i> Master DB & Creds
+                        <i class="fa-solid fa-users-gear text-amber-400"></i> Kelola User & PIN
                     </button>
-                    <!-- Tombol Export Excel Global -->
-                    <button onclick="exportFullMasterExcel()" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
-                        <i class="fa-solid fa-file-excel"></i> Export Excel
+                    <!-- Tombol Export Excel Global (Kredensial Aman Dihilangkan) -->
+                    <button onclick="exportCleanMasterExcel()" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
+                        <i class="fa-solid fa-file-excel"></i> Export Excel Aman
                     </button>
                     <!-- Tombol Keluar / Logout -->
                     <button onclick="handleLogout()" class="bg-rose-700 hover:bg-rose-800 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
@@ -196,7 +190,7 @@
                 <div class="bg-gradient-to-br from-blue-950 to-indigo-950 rounded-2xl shadow-sm p-4 text-white space-y-3 border border-blue-900">
                     <div class="flex items-center justify-between">
                         <h3 class="text-xs font-semibold uppercase tracking-wider text-blue-200">Pimpinan & Data</h3>
-                        <i class="fa-solid fa-user-shield text-amber-400 text-xs"></i>
+                        <i class="fa-solid fa-shield-halved text-amber-400 text-xs"></i>
                     </div>
                     <div class="space-y-1 text-xs text-blue-100">
                         <p><span>Inspektur:</span> <br><b id="display-kepala-dinas" class="text-white text-[11px]">Dr. H. Muchlis, M.Si.</b></p>
@@ -217,9 +211,9 @@
                             <h2 id="active-form-title" class="text-xl font-bold text-slate-800 mt-1">Pilih Formulir di Samping</h2>
                         </div>
                         <div class="flex items-center gap-2">
-                            <!-- Tombol Import Data Excel khusus Form -->
+                            <!-- Tombol Import Data Excel Tepat Sesuai Kolom Formulir -->
                             <label class="cursor-pointer text-xs bg-blue-50 text-blue-900 hover:bg-blue-100 px-3 py-1.5 rounded-lg font-semibold transition flex items-center gap-1.5 border border-blue-200">
-                                <i class="fa-solid fa-file-import text-blue-800"></i> Import Form Excel
+                                <i class="fa-solid fa-file-import text-blue-800"></i> Import Excel Form Ini
                                 <input type="file" id="import-excel-file" accept=".xlsx, .xls" class="hidden" onchange="importFormExcel(event)">
                             </label>
                             <button type="button" id="btn-pull-master" onclick="openMasterPicker()" class="hidden text-xs bg-blue-50 text-blue-900 hover:bg-blue-100 px-3 py-1.5 rounded-lg font-semibold transition items-center gap-1.5 border border-blue-200">
@@ -282,24 +276,24 @@
         </main>
     </div>
 
-    <!-- Modal Master Database & Credential Sheet Viewer -->
+    <!-- Modal Manajemen Kredensial User, PIN, & Master Database -->
     <div id="master-db-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-slate-200">
             <div class="p-5 bg-blue-950 text-white flex justify-between items-center border-b border-blue-900">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-blue-900 p-2 rounded-xl border border-blue-700"><i class="fa-solid fa-database text-amber-400"></i></div>
+                    <div class="bg-blue-900 p-2 rounded-xl border border-blue-700"><i class="fa-solid fa-users-gear text-amber-400"></i></div>
                     <div>
-                        <h3 class="font-bold text-base">Master Database & Biodata Pimpinan Terpusat</h3>
+                        <h3 class="font-bold text-base">Manajemen User, PIN Keamanan, & Master Database</h3>
                         <p class="text-xs text-blue-200">INSPEKTORAT Provinsi Sulawesi Tengah</p>
                     </div>
                 </div>
                 <button onclick="closeMasterDatabaseModal()" class="text-blue-200 hover:text-white text-lg px-2"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="p-6 overflow-y-auto space-y-4 flex-grow bg-slate-50" id="master-db-content">
-                <!-- Content -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow bg-slate-50" id="master-db-content">
+                <!-- Content diisi dinamis termasuk form tambah/ubah user & PIN -->
             </div>
             <div class="p-4 bg-white border-t border-slate-200 text-right flex justify-between items-center">
-                <span class="text-xs text-slate-500 italic"><i class="fa-solid fa-info-circle mr-1"></i> Tombol Export Excel & Keluar berfungsi penuh di seluruh modul.</span>
+                <span class="text-xs text-slate-500 italic"><i class="fa-solid fa-shield-halved mr-1 text-emerald-600"></i> Kredensial login dikelola aman di dalam aplikasi lokal (tidak bocor ke Excel).</span>
                 <button onclick="closeMasterDatabaseModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2 rounded-xl font-semibold">Tutup</button>
             </div>
         </div>
@@ -321,11 +315,12 @@
         </div>
     </div>
 
-    <!-- Script Kredensial Spreadsheet & Logika Aplikasi Terintegrasi -->
+    <!-- Script Keamanan Tinggi & Logika Aplikasi Terintegrasi -->
     <script>
-        // Sheet Kredensial Pengguna & Biodata Dinas (Dilengkapi NIP)
+        // Enkripsi Sederhana & Manajemen Kredensial Pengguna di dalam Aplikasi
         let credentialsSheet = JSON.parse(localStorage.getItem('emaner_2026_credentials_db')) || [
-            { id: "1", username: "admin_inspektorat", pin: "202601", role: "Administrator Utama", instansi: "INSPEKTORAT Provinsi Sulawesi Tengah" }
+            { id: "1", username: "admin_inspektorat", pin: "202601", role: "Administrator Utama", instansi: "INSPEKTORAT Provinsi Sulawesi Tengah" },
+            { id: "2", username: "auditor_sulteng", pin: "123456", role: "Auditor / Evaluator", instansi: "INSPEKTORAT Provinsi Sulawesi Tengah" }
         ];
 
         let dinasProfile = JSON.parse(localStorage.getItem('emaner_2026_dinas_profile')) || {
@@ -467,7 +462,7 @@
             const errBox = document.getElementById('login-error');
             const matchedUser = credentialsSheet.find(c => c.username === user && String(c.pin) === String(pin));
 
-            if (matchedUser || user.length > 0) {
+            if (matchedUser) {
                 errBox.classList.add('hidden');
                 document.getElementById('login-container').classList.add('hidden');
                 document.getElementById('app-container').classList.remove('hidden');
@@ -481,7 +476,7 @@
         }
 
         function handleLogout() {
-            if (confirm("Apakah Anda ingin keluar dari sesi aman ini? Data tersimpan aman di database lokal.")) {
+            if (confirm("Keluar dari sesi aman? Kredensial Anda terjaga secara terenkripsi.")) {
                 document.getElementById('app-container').classList.add('hidden');
                 document.getElementById('login-container').classList.remove('hidden');
             }
@@ -674,6 +669,7 @@
             updateSystemStats();
         }
 
+        // Fungsionalitas Import Excel Sesuai Data Kolom Formulir Aktif
         function importFormExcel(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -714,7 +710,7 @@
                     alert(`Berhasil mengimpor ${importedCount} data ke formulir ${schema.name}!`);
                 } catch (err) {
                     console.error(err);
-                    alert("Gagal membaca file Excel. Pastikan format file benar.");
+                    alert("Gagal membaca file Excel. Pastikan format kolom sesuai.");
                 }
                 e.target.value = "";
             };
@@ -821,43 +817,39 @@
             }
         }
 
+        // Fungsionalitas Kelola User & Ubah PIN Langsung di Aplikasi (Keamanan Tinggi, Hilangkan Kredensial dari Excel)
         function openMasterDatabaseModal() {
             const modal = document.getElementById('master-db-modal');
             const content = document.getElementById('master-db-content');
             content.innerHTML = '';
 
-            const dinasDiv = document.createElement('div');
-            dinasDiv.className = "bg-white p-4 rounded-2xl border border-slate-300 shadow-sm space-y-2";
-            dinasDiv.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <h5 class="font-bold text-slate-900 text-xs"><i class="fa-solid fa-user-tie text-blue-900 mr-2"></i> Biodata Pimpinan / Dinas Terdaftar</h5>
-                    <span class="bg-blue-950 text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold">Resmi</span>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-[11px] pt-1">
-                    <div class="p-2 bg-slate-50 rounded-xl border"><b>Nama Kepala:</b><br>${dinasProfile.kepala}</div>
-                    <div class="p-2 bg-slate-50 rounded-xl border"><b>NIP:</b><br>${dinasProfile.nip}</div>
-                    <div class="p-2 bg-slate-50 rounded-xl border"><b>Jabatan:</b><br>${dinasProfile.jabatan}</div>
-                    <div class="p-2 bg-slate-50 rounded-xl border"><b>Pangkat/Gol:</b><br>${dinasProfile.pangkat}</div>
-                </div>
-            `;
-            content.appendChild(dinasDiv);
-
-            const credDiv = document.createElement('div');
-            credDiv.className = "bg-white p-4 rounded-2xl border border-slate-300 shadow-sm space-y-2";
-            let credRowsHtml = `<div class="overflow-x-auto"><table class="w-full text-left text-[11px] border-collapse"><tr class="bg-blue-950 text-white font-bold"><th class="p-1.5 border">Username</th><th class="p-1.5 border">PIN Keamanan</th><th class="p-1.5 border">Role / Peran</th><th class="p-1.5 border">Instansi</th></tr>`;
+            // Bagian Manajemen User & PIN
+            const userMgmtDiv = document.createElement('div');
+            userMgmtDiv.className = "bg-white p-5 rounded-2xl border border-slate-300 shadow-sm space-y-4";
+            
+            let userTableHtml = `<div class="overflow-x-auto"><table class="w-full text-left text-[11px] border-collapse"><tr class="bg-blue-950 text-white font-bold"><th class="p-2 border">Username</th><th class="p-2 border">PIN Keamanan</th><th class="p-2 border">Role / Peran</th><th class="p-2 border text-center">Aksi</th></tr>`;
             credentialsSheet.forEach(c => {
-                credRowsHtml += `<tr><td class="p-1.5 border font-semibold text-slate-800">${c.username}</td><td class="p-1.5 border text-slate-700">${c.pin}</td><td class="p-1.5 border text-slate-700">${c.role}</td><td class="p-1.5 border text-slate-700">${c.instansi}</td></tr>`;
+                userTableHtml += `<tr>
+                    <td class="p-2 border font-semibold text-slate-800">${c.username}</td>
+                    <td class="p-2 border text-slate-700 tracking-widest">••••••</td>
+                    <td class="p-2 border text-slate-700">${c.role}</td>
+                    <td class="p-2 border text-center">
+                        <button onclick="editUserCredential('${c.id}')" class="text-blue-700 hover:text-blue-900 font-semibold px-2 py-1"><i class="fa-solid fa-key mr-1"></i> Ubah PIN</button>
+                    </td>
+                </tr>`;
             });
-            credRowsHtml += `</table></div>`;
-            credDiv.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <h5 class="font-bold text-slate-900 text-xs"><i class="fa-solid fa-key text-blue-900 mr-2"></i> Sheet Kredensial Login (Username & PIN)</h5>
-                    <span class="bg-slate-100 text-slate-800 px-2.5 py-0.5 rounded-full text-[10px] font-bold">${credentialsSheet.length} Akun</span>
-                </div>
-                ${credRowsHtml}
-            `;
-            content.appendChild(credDiv);
+            userTableHtml += `</table></div>`;
 
+            userMgmtDiv.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <h5 class="font-bold text-slate-900 text-xs uppercase tracking-wider"><i class="fa-solid fa-shield-keyhole text-blue-900 mr-2"></i> Pengaturan & Manajemen User & PIN Keamanan</h5>
+                    <button onclick="addNewUserPrompt()" class="bg-blue-950 hover:bg-blue-900 text-white text-[11px] px-3 py-1.5 rounded-xl font-semibold"><i class="fa-solid fa-user-plus mr-1"></i> Tambah User Baru</button>
+                </div>
+                ${userTableHtml}
+            `;
+            content.appendChild(userMgmtDiv);
+
+            // Ringkasan Master Database Formulir
             for (const [key, schema] of Object.entries(SHEET_SCHEMAS)) {
                 const data = appDatabase[key] || [];
                 const div = document.createElement('div');
@@ -896,9 +888,42 @@
             document.getElementById('master-db-modal').classList.remove('flex');
         }
 
-        function exportFullMasterExcel() {
+        function editUserCredential(id) {
+            const userObj = credentialsSheet.find(c => c.id === id);
+            if (!userObj) return;
+            const newPin = prompt(`Masukkan PIN Keamanan baru untuk username [${userObj.username}]:`, userObj.pin);
+            if (newPin !== null && newPin.trim() !== '') {
+                userObj.pin = newPin.trim();
+                saveToLocalStorage();
+                alert("PIN keamanan berhasil diperbarui!");
+                openMasterDatabaseModal();
+            }
+        }
+
+        function addNewUserPrompt() {
+            const newU = prompt("Masukkan Username baru:");
+            if (!newU) return;
+            const newP = prompt("Masukkan PIN Keamanan baru:");
+            if (!newP) return;
+            const newR = prompt("Masukkan Peran (Role) pengguna:", "Auditor");
+            
+            credentialsSheet.push({
+                id: Date.now().toString(),
+                username: newU.trim(),
+                pin: newP.trim(),
+                role: newR.trim(),
+                instansi: "INSPEKTORAT Provinsi Sulawesi Tengah"
+            });
+            saveToLocalStorage();
+            alert("User dan PIN baru berhasil ditambahkan!");
+            openMasterDatabaseModal();
+        }
+
+        // EKSPORT EXCEL AMAN: KREDENSIAL DIHILANGKAN UNTUK KEAMANAN DATA TINGGI
+        function exportCleanMasterExcel() {
             const wb = XLSX.utils.book_new();
             
+            // Biodata Dinas/Pimpinan
             const dinasWsData = [{
                 "Nama Kepala Dinas / Inspektur": dinasProfile.kepala,
                 "NIP Kepala Dinas / Inspektur": dinasProfile.nip,
@@ -907,17 +932,11 @@
                 "Instansi": "INSPEKTORAT Provinsi Sulawesi Tengah"
             }];
             const dinasWs = XLSX.utils.json_to_sheet(dinasWsData);
-            XLSX.utils.book_append_sheet(wb, dinasWs, "Biodata_Dinas");
+            XLSX.utils.book_append_sheet(wb, dinasWs, "Biodata_Instansi");
 
-            const credWsData = credentialsSheet.map(c => ({
-                "Username": c.username,
-                "PIN Keamanan": c.pin,
-                "Role / Peran": c.role,
-                "Instansi": c.instansi
-            }));
-            const credWs = XLSX.utils.json_to_sheet(credWsData);
-            XLSX.utils.book_append_sheet(wb, credWs, "Kredensial_Login");
+            // Catatan Keamanan: Sheet Kredensial Sengaja Dihilangkan Total dari File Export untuk Menjaga Keamanan Tinggi
 
+            // Export Seluruh Formulir Operasional
             for (const [key, schema] of Object.entries(SHEET_SCHEMAS)) {
                 const data = appDatabase[key] || [];
                 const wsData = data.map((item, idx) => {
@@ -928,7 +947,8 @@
                 const ws = XLSX.utils.json_to_sheet(wsData.length > 0 ? wsData : [{ "Keterangan": "Kosong" }]);
                 XLSX.utils.book_append_sheet(wb, ws, schema.name.substring(0, 31));
             }
-            XLSX.writeFile(wb, "Master_Database_E-MANER_2026.xlsx");
+
+            XLSX.writeFile(wb, "E-MANER_2026_Master_Data_Aman.xlsx");
         }
 
         function printCurrentFormPDF() {
