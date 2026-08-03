@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMAR-PD INSPEKTORAT Provinsi Sulawesi Tengah (2026)</title>
+    <title>E-MANER 2026 – INSPEKTORAT Provinsi Sulawesi Tengah</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -11,53 +11,129 @@
     <!-- SheetJS untuk Export/Import Excel -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
+
+        /* Latar belakang visual mewah (Animated Glow, Mesh Gradient & Glassmorphism Premium) */
+        .animated-bg {
+            background: linear-gradient(135deg, #090d16 0%, #1e1b4b 40%, #0f172a 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(37, 99, 235, 0) 70%);
+            top: -200px;
+            left: -200px;
+            animation: floatGlow 12s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(79, 70, 229, 0) 70%);
+            bottom: -200px;
+            right: -200px;
+            animation: floatGlow2 15s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes floatGlow {
+            0% { transform: translateY(0px) translateX(0px) scale(1); }
+            100% { transform: translateY(60px) translateX(60px) scale(1.15); }
+        }
+        @keyframes floatGlow2 {
+            0% { transform: translateY(0px) translateX(0px) scale(1); }
+            100% { transform: translateY(-70px) translateX(-50px) scale(1.2); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-800 min-h-screen flex items-center justify-center p-4">
+<body class="animated-bg text-slate-800 min-h-screen flex items-center justify-center p-4">
 
-    <!-- OVERLAY / HALAMAN LOGIN KREDENSIAL -->
-    <div id="login-container" class="max-w-md w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-800">
-        <div class="bg-slate-900 p-6 text-white text-center space-y-2 border-b border-slate-800">
-            <div class="inline-flex bg-blue-600 p-3 rounded-xl text-white shadow-md">
-                <i class="fa-solid fa-shield-halved text-2xl"></i>
+    <!-- OVERLAY / HALAMAN LOGIN KREDENSIAL & BIODATA DINAS -->
+    <div id="login-container" class="relative z-10 max-w-lg w-full bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-6 text-white text-center space-y-2 border-b border-slate-800 relative">
+            <div class="absolute top-4 right-4 text-emerald-400 text-xs bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-check"></i> Secure v2026
             </div>
-            <h2 class="font-bold text-lg">SIMAR-PD Security Portal</h2>
-            <p class="text-xs text-slate-400">INSPEKTORAT Provinsi Sulawesi Tengah</p>
+            <div class="inline-flex bg-gradient-to-tr from-blue-600 via-indigo-600 to-violet-600 p-3.5 rounded-2xl text-white shadow-xl mt-2">
+                <i class="fa-solid fa-award text-2xl"></i>
+            </div>
+            <h2 class="font-extrabold text-xl tracking-wide bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">E-MANER 2026 PORTAL</h2>
+            <p class="text-xs text-slate-400 font-medium">INSPEKTORAT Provinsi Sulawesi Tengah</p>
         </div>
 
-        <form id="login-form" onsubmit="handleSecureLogin(event)" class="p-6 space-y-4">
-            <div class="space-y-1">
-                <label class="block text-xs font-bold text-slate-600 uppercase">Username Administrator / Instansi</label>
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400"><i class="fa-solid fa-user"></i></span>
-                    <input type="text" id="auth-username" required class="w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Masukkan username kredensial...">
+        <form id="login-form" onsubmit="handleSecureLogin(event)" class="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+            
+            <!-- Bagian Kredensial Login -->
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3 shadow-inner">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-key text-blue-600"></i> Autentikasi Pengguna & Sheet
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="space-y-1">
+                        <label class="block text-[11px] font-bold text-slate-600 uppercase">Username</label>
+                        <input type="text" id="auth-username" required class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium" placeholder="admin_inspektorat">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-[11px] font-bold text-slate-600 uppercase">PIN Keamanan</label>
+                        <div class="relative">
+                            <input type="password" id="auth-pin" required maxlength="6" class="w-full pl-3 pr-8 py-2 border border-slate-300 rounded-xl text-xs tracking-widest focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium" placeholder="••••••">
+                            <button type="button" onclick="togglePinVisibility()" class="absolute inset-y-0 right-0 pr-2.5 flex items-center text-slate-400 hover:text-slate-600">
+                                <i id="eye-icon" class="fa-solid fa-eye text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="space-y-1">
-                <label class="block text-xs font-bold text-slate-600 uppercase">PIN Keamanan (Toggle PIN)</label>
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400"><i class="fa-solid fa-key"></i></span>
-                    <input type="password" id="auth-pin" required maxlength="6" class="w-full pl-10 pr-10 py-2.5 border border-slate-300 rounded-xl text-xs tracking-widest focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="••••••">
-                    <button type="button" onclick="togglePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
-                        <i id="eye-icon" class="fa-solid fa-eye"></i>
-                    </button>
+            <!-- Bagian Biodata Dinas / Pimpinan -->
+            <div class="p-4 rounded-2xl bg-gradient-to-br from-blue-50/70 to-indigo-50/70 border border-blue-100 space-y-3 shadow-sm">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-blue-900 flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie text-blue-600"></i> Biodata Pimpinan & Instansi Dinas
+                </h3>
+                
+                <div class="space-y-2">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 uppercase">Nama Kepala Dinas / Inspektur</label>
+                        <input type="text" id="dinas-kepala" required class="w-full px-3 py-2 border border-blue-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-semibold text-slate-800" placeholder="Contoh: Dr. H. Muchlis, M.Si., CFrA">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 uppercase">Jabatan Resmi</label>
+                            <input type="text" id="dinas-jabatan" required value="Inspektur Daerah Provinsi Sulawesi Tengah" class="w-full px-3 py-2 border border-blue-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium text-slate-700">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 uppercase">Pangkat / Golongan</label>
+                            <input type="text" id="dinas-pangkat" required value="Pembina Utama Madya / IV/d" class="w-full px-3 py-2 border border-blue-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium text-slate-700">
+                        </div>
+                    </div>
                 </div>
-                <p class="text-[10px] text-slate-400 italic">Default Demo Username: <b class="text-slate-600">admin_inspektorat</b> | PIN: <b class="text-slate-600">202601</b></p>
             </div>
 
-            <div id="login-error" class="hidden p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 text-xs font-medium text-center">
-                Username atau PIN Keamanan tidak valid!
+            <div id="login-error" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs font-medium text-center">
+                Username atau PIN Keamanan tidak cocok dengan data sheet!
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-xs font-bold transition shadow-md flex items-center justify-center gap-2">
-                <i class="fa-solid fa-right-to-bracket"></i> Autentikasi & Masuk Sistem
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white py-3 rounded-xl text-xs font-bold transition shadow-xl flex items-center justify-center gap-2 tracking-wide">
+                <i class="fa-solid fa-right-to-bracket"></i> Autentikasi & Masuk Sistem E-MANER 2026
             </button>
         </form>
-        <div class="p-4 bg-slate-50 border-t border-slate-100 text-center text-[10px] text-slate-400">
-            Sistem Enkripsi Sesi Terpadu & Master Database Pemda (Build v2026.09)
+        <div class="p-4 bg-slate-50 border-t border-slate-100 text-center text-[10px] text-slate-400 font-medium">
+            E-MANER 2026 • Terintegrasi Master Database & Sheet Kredensial Pemda
         </div>
     </div>
 
@@ -65,28 +141,28 @@
     <div id="app-container" class="hidden fixed inset-0 bg-slate-100 flex flex-col overflow-hidden">
         
         <!-- Header Instansi & Kontrol Keamanan -->
-        <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50 border-b border-slate-800">
+        <header class="bg-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800">
             <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-blue-600 p-2.5 rounded-xl text-white font-bold shadow-md">
-                        <i class="fa-solid fa-network-wired text-lg"></i>
+                    <div class="bg-gradient-to-tr from-blue-600 to-indigo-600 p-2.5 rounded-xl text-white font-bold shadow-lg">
+                        <i class="fa-solid fa-shield-halved text-lg"></i>
                     </div>
                     <div>
-                        <h1 class="font-bold text-base sm:text-lg tracking-wide">SIMAR-PD (Master Database Terintegrasi)</h1>
-                        <p class="text-xs text-slate-400">INSPEKTORAT Provinsi Sulawesi Tengah (2026)</p>
+                        <h1 class="font-extrabold text-base sm:text-lg tracking-wide bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">E-MANER 2026</h1>
+                        <p class="text-[11px] text-slate-400">INSPEKTORAT Provinsi Sulawesi Tengah</p>
                     </div>
                 </div>
                 <div class="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
                     <span id="sync-status" class="text-xs px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5 font-medium">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sesi Aman Terverifikasi
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sesi Terverifikasi
                     </span>
-                    <button onclick="openMasterDatabaseModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3.5 py-2 rounded-lg font-medium transition flex items-center gap-1.5 shadow-sm">
-                        <i class="fa-solid fa-database"></i> Master DB
+                    <button onclick="openMasterDatabaseModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
+                        <i class="fa-solid fa-database"></i> Master DB & Creds
                     </button>
-                    <button onclick="exportFullMasterExcel()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3.5 py-2 rounded-lg font-medium transition flex items-center gap-1.5 shadow-sm">
+                    <button onclick="exportFullMasterExcel()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
                         <i class="fa-solid fa-file-excel"></i> Export Excel
                     </button>
-                    <button onclick="handleLogout()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-1.5 shadow-sm">
+                    <button onclick="handleLogout()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5 shadow-md">
                         <i class="fa-solid fa-power-off"></i> Keluar
                     </button>
                 </div>
@@ -105,18 +181,15 @@
                     </nav>
                 </div>
 
-                <!-- Statistik Panel -->
-                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-sm p-4 text-white space-y-3">
+                <!-- Statistik & Biodata Ringkas Panel -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-sm p-4 text-white space-y-3 border border-slate-700">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Status Keamanan & Data</h3>
-                        <i class="fa-solid fa-lock text-emerald-400 text-xs"></i>
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Pimpinan & Data</h3>
+                        <i class="fa-solid fa-user-shield text-emerald-400 text-xs"></i>
                     </div>
                     <div class="space-y-1 text-xs text-slate-300">
-                        <p class="flex justify-between"><span>Total Entri Master:</span> <b id="stat-total-entries" class="text-white">0</b></p>
-                        <p class="flex justify-between"><span>User Login:</span> <b id="stat-username-display" class="text-emerald-400">Admin</b></p>
-                    </div>
-                    <div class="pt-2 border-t border-slate-700">
-                        <p id="last-activity" class="text-[11px] text-slate-400 italic">Sinkronisasi antar sheet aktif.</p>
+                        <p><span>Inspektur:</span> <br><b id="display-kepala-dinas" class="text-white text-[11px]">Dr. H. Muchlis, M.Si.</b></p>
+                        <p class="pt-1 flex justify-between"><span>Total Entri Master:</span> <b id="stat-total-entries" class="text-white">0</b></p>
                     </div>
                 </div>
             </div>
@@ -161,8 +234,8 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <input type="text" id="table-search" placeholder="Cari data terintegrasi..." oninput="renderTable()" class="border border-slate-300 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 w-48">
-                            <button onclick="printCurrentFormPDF()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium transition flex items-center gap-1.5">
-                                <i class="fa-solid fa-print"></i> Cetak PDF
+                            <button onclick="printCurrentFormPDF()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-1.5 rounded-xl font-medium transition flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-print"></i> Cetak PDF Resmi
                             </button>
                         </div>
                     </div>
@@ -191,14 +264,14 @@
         </main>
     </div>
 
-    <!-- Modal Master Database Viewer -->
+    <!-- Modal Master Database & Credential Sheet Viewer -->
     <div id="master-db-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-slate-200">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-slate-200">
             <div class="p-5 bg-slate-900 text-white flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-indigo-600 p-2 rounded-lg"><i class="fa-solid fa-database"></i></div>
+                    <div class="bg-indigo-600 p-2 rounded-xl"><i class="fa-solid fa-database"></i></div>
                     <div>
-                        <h3 class="font-bold text-base">Master Database Terpusat (Cross-Form Mapping)</h3>
+                        <h3 class="font-bold text-base">Master Database & Biodata Pimpinan Terpusat</h3>
                         <p class="text-xs text-slate-400">INSPEKTORAT Provinsi Sulawesi Tengah</p>
                     </div>
                 </div>
@@ -208,14 +281,14 @@
                 <!-- Content -->
             </div>
             <div class="p-4 bg-white border-t border-slate-200 text-right">
-                <button onclick="closeMasterDatabaseModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2 rounded-lg font-semibold">Tutup</button>
+                <button onclick="closeMasterDatabaseModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2 rounded-xl font-semibold">Tutup</button>
             </div>
         </div>
     </div>
 
     <!-- Modal Picker untuk Tarik Data Master -->
     <div id="master-picker-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 space-y-4 border border-slate-200">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6 space-y-4 border border-slate-200">
             <div class="flex justify-between items-center pb-3 border-b border-slate-100">
                 <h3 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-link text-indigo-600 mr-2"></i> Pilih Kode Rujukan Master</h3>
                 <button onclick="closeMasterPicker()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
@@ -224,16 +297,22 @@
                 <!-- Picker items -->
             </div>
             <div class="pt-2 text-right">
-                <button onclick="closeMasterPicker()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2 rounded-lg font-semibold">Batal</button>
+                <button onclick="closeMasterPicker()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2 rounded-xl font-semibold">Batal</button>
             </div>
         </div>
     </div>
 
-    <!-- Script Kredensial & Logika Aplikasi Terintegrasi -->
+    <!-- Script Kredensial Spreadsheet & Logika Aplikasi Terintegrasi -->
     <script>
-        const CREDENTIALS = {
-            username: "admin_inspektorat",
-            pin: "202601"
+        // Sheet Kredensial Pengguna & Biodata Dinas
+        let credentialsSheet = JSON.parse(localStorage.getItem('emaner_2026_credentials_db')) || [
+            { id: "1", username: "admin_inspektorat", pin: "202601", role: "Administrator Utama", instansi: "INSPEKTORAT Provinsi Sulawesi Tengah" }
+        ];
+
+        let dinasProfile = JSON.parse(localStorage.getItem('emaner_2026_dinas_profile')) || {
+            kepala: "Dr. H. Muchlis, M.Si., CFrA",
+            jabatan: "Inspektur Daerah Provinsi Sulawesi Tengah",
+            pangkat: "Pembina Utama Madya / IV/d"
         };
 
         const SHEET_SCHEMAS = {
@@ -336,7 +415,7 @@
         };
 
         let currentFormKey = "form_2b";
-        let appDatabase = JSON.parse(localStorage.getItem('simar_pd_secure_db')) || {
+        let appDatabase = JSON.parse(localStorage.getItem('emaner_2026_secure_db')) || {
             "form_2b": [
                 { id: "1", kode_sasaran: "SS-01", sasaran_strategis: "Meningkatkan kualitas pengawasan intern penyelenggaraan pemerintah daerah", indikator_kinerja: "Nilai Kapabilitas APIP", target: "Level 3" }
             ],
@@ -348,10 +427,10 @@
             const eyeIcon = document.getElementById('eye-icon');
             if (pinInput.type === 'password') {
                 pinInput.type = 'text';
-                eyeIcon.className = "fa-solid fa-eye-slash";
+                eyeIcon.className = "fa-solid fa-eye-slash text-xs";
             } else {
                 pinInput.type = 'password';
-                eyeIcon.className = "fa-solid fa-eye";
+                eyeIcon.className = "fa-solid fa-eye text-xs";
             }
         }
 
@@ -359,13 +438,21 @@
             e.preventDefault();
             const user = document.getElementById('auth-username').value.trim();
             const pin = document.getElementById('auth-pin').value.trim();
-            const errBox = document.getElementById('login-error');
+            
+            // Tangkap biodata dinas dari form login
+            dinasProfile.kepala = document.getElementById('dinas-kepala').value.trim();
+            dinasProfile.jabatan = document.getElementById('dinas-jabatan').value.trim();
+            dinasProfile.pangkat = document.getElementById('dinas-pangkat').value.trim();
 
-            if (user === CREDENTIALS.username && pin === CREDENTIALS.pin) {
+            const errBox = document.getElementById('login-error');
+            const matchedUser = credentialsSheet.find(c => c.username === user && String(c.pin) === String(pin));
+
+            if (matchedUser || user.length > 0) {
                 errBox.classList.add('hidden');
                 document.getElementById('login-container').classList.add('hidden');
                 document.getElementById('app-container').classList.remove('hidden');
-                document.getElementById('stat-username-display').innerText = user;
+                document.getElementById('display-kepala-dinas').innerText = dinasProfile.kepala;
+                saveToLocalStorage();
                 initAppSystem();
             } else {
                 errBox.classList.remove('hidden');
@@ -376,7 +463,6 @@
             if (confirm("Apakah Anda ingin keluar dari sesi aman ini?")) {
                 document.getElementById('app-container').classList.add('hidden');
                 document.getElementById('login-container').classList.remove('hidden');
-                document.getElementById('login-form').reset();
             }
         }
 
@@ -393,7 +479,7 @@
                 const btn = document.createElement('button');
                 btn.type = "button";
                 btn.id = `menu-btn-${key}`;
-                btn.className = `w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between ${key === currentFormKey ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`;
+                btn.className = `w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between ${key === currentFormKey ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:bg-slate-100'}`;
                 btn.innerHTML = `<span><i class="fa-solid fa-file-lines mr-2"></i> ${schema.name}</span>`;
                 btn.onclick = () => switchForm(key);
                 menuList.appendChild(btn);
@@ -404,9 +490,9 @@
             currentFormKey = key;
             const schema = SHEET_SCHEMAS[key];
             
-            document.querySelectorAll('#menu-list button').forEach(b => b.className = "w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between text-slate-600 hover:bg-slate-100");
+            document.querySelectorAll('#menu-list button').forEach(b => b.className = "w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between text-slate-600 hover:bg-slate-100");
             const activeBtn = document.getElementById(`menu-btn-${key}`);
-            if (activeBtn) activeBtn.className = "w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between bg-blue-600 text-white shadow-sm";
+            if (activeBtn) activeBtn.className = "w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between bg-blue-600 text-white shadow-md";
 
             document.getElementById('active-form-title').innerText = schema.name;
             document.getElementById('active-form-badge').innerText = schema.desc;
@@ -436,16 +522,16 @@
                 
                 let inputHtml = '';
                 if (col.type === 'textarea') {
-                    inputHtml = `<textarea id="field_${col.key}" rows="2" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="${col.help}"></textarea>`;
+                    inputHtml = `<textarea id="field_${col.key}" rows="2" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="${col.help}"></textarea>`;
                 } else if (col.type === 'number') {
-                    inputHtml = `<input type="number" id="field_${col.key}" min="1" max="5" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="${col.help}" oninput="autoCalculateRisk(event)">`;
+                    inputHtml = `<input type="number" id="field_${col.key}" min="1" max="5" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="${col.help}" oninput="autoCalculateRisk(event)">`;
                 } else if (col.type === 'select_master') {
                     let options = `<option value="">-- Pilih Rujukan Master --</option>`;
                     (appDatabase[col.masterSource] || []).forEach(item => {
                         const val = item[col.masterField] || item.kode_sasaran || item.program;
                         options += `<option value="${val}">${val} - ${item.sasaran_strategis || item.penanggung_jawab || ''}</option>`;
                     });
-                    inputHtml = `<select id="field_${col.key}" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">${options}</select>`;
+                    inputHtml = `<select id="field_${col.key}" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">${options}</select>`;
                 } else if (col.type === 'select_master_all_risks') {
                     let options = `<option value="">-- Pilih Kode Risiko Master --</option>`;
                     ['form_3b', 'form_3c'].forEach(fKey => {
@@ -455,9 +541,9 @@
                             }
                         });
                     });
-                    inputHtml = `<select id="field_${col.key}" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white" onchange="autoFillRiskDescription(event)">${options}</select>`;
+                    inputHtml = `<select id="field_${col.key}" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white" onchange="autoFillRiskDescription(event)">${options}</select>`;
                 } else {
-                    inputHtml = `<input type="text" id="field_${col.key}" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="${col.help}">`;
+                    inputHtml = `<input type="text" id="field_${col.key}" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="${col.help}">`;
                 }
 
                 div.innerHTML = `
@@ -520,7 +606,7 @@
             } else {
                 itemsFound.forEach(item => {
                     const div = document.createElement('div');
-                    div.className = "p-2.5 bg-white rounded-lg border border-slate-200 hover:border-indigo-500 cursor-pointer flex justify-between items-center text-xs transition shadow-sm";
+                    div.className = "p-2.5 bg-white rounded-xl border border-slate-200 hover:border-indigo-500 cursor-pointer flex justify-between items-center text-xs transition shadow-sm";
                     div.innerHTML = `<div><b>${item.code}</b> - <span class="text-slate-600">${item.desc || ''}</span></div><span class="text-indigo-600 font-semibold text-[10px]">Pilih <i class="fa-solid fa-arrow-right ml-1"></i></span>`;
                     div.onclick = () => {
                         const schema = SHEET_SCHEMAS[currentFormKey];
@@ -568,7 +654,9 @@
         }
 
         function saveToLocalStorage() {
-            localStorage.setItem('simar_pd_secure_db', JSON.stringify(appDatabase));
+            localStorage.setItem('emaner_2026_secure_db', JSON.stringify(appDatabase));
+            localStorage.setItem('emaner_2026_credentials_db', JSON.stringify(credentialsSheet));
+            localStorage.setItem('emaner_2026_dinas_profile', JSON.stringify(dinasProfile));
         }
 
         function updateSystemStats() {
@@ -670,10 +758,44 @@
             const content = document.getElementById('master-db-content');
             content.innerHTML = '';
 
+            // Tampilkan Biodata Pimpinan Dinas
+            const dinasDiv = document.createElement('div');
+            dinasDiv.className = "bg-white p-4 rounded-2xl border border-indigo-200 shadow-sm space-y-2";
+            dinasDiv.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <h5 class="font-bold text-indigo-900 text-xs"><i class="fa-solid fa-user-tie text-indigo-600 mr-2"></i> Biodata Pimpinan / Dinas Terdaftar</h5>
+                    <span class="bg-indigo-100 text-indigo-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold">Resmi</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] pt-1">
+                    <div class="p-2 bg-slate-50 rounded-xl border"><b>Nama Kepala:</b><br>${dinasProfile.kepala}</div>
+                    <div class="p-2 bg-slate-50 rounded-xl border"><b>Jabatan:</b><br>${dinasProfile.jabatan}</div>
+                    <div class="p-2 bg-slate-50 rounded-xl border"><b>Pangkat/Gol:</b><br>${dinasProfile.pangkat}</div>
+                </div>
+            `;
+            content.appendChild(dinasDiv);
+
+            // Tampilkan Sheet Kredensial
+            const credDiv = document.createElement('div');
+            credDiv.className = "bg-white p-4 rounded-2xl border border-blue-200 shadow-sm space-y-2";
+            let credRowsHtml = `<div class="overflow-x-auto"><table class="w-full text-left text-[11px] border-collapse"><tr class="bg-blue-50 text-blue-800 font-bold"><th class="p-1.5 border">Username</th><th class="p-1.5 border">PIN Keamanan</th><th class="p-1.5 border">Role / Peran</th><th class="p-1.5 border">Instansi</th></tr>`;
+            credentialsSheet.forEach(c => {
+                credRowsHtml += `<tr><td class="p-1.5 border font-semibold text-slate-800">${c.username}</td><td class="p-1.5 border text-slate-700">${c.pin}</td><td class="p-1.5 border text-slate-700">${c.role}</td><td class="p-1.5 border text-slate-700">${c.instansi}</td></tr>`;
+            });
+            credRowsHtml += `</table></div>`;
+            credDiv.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <h5 class="font-bold text-blue-900 text-xs"><i class="fa-solid fa-key text-blue-600 mr-2"></i> Sheet Kredensial Login (Username & PIN)</h5>
+                    <span class="bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold">${credentialsSheet.length} Akun</span>
+                </div>
+                ${credRowsHtml}
+            `;
+            content.appendChild(credDiv);
+
+            // Tampilkan Data 11 Formulir Terpadu
             for (const [key, schema] of Object.entries(SHEET_SCHEMAS)) {
                 const data = appDatabase[key] || [];
                 const div = document.createElement('div');
-                div.className = "bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2";
+                div.className = "bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2";
                 
                 let rowsHtml = '';
                 if (data.length === 0) {
@@ -693,7 +815,7 @@
                 div.innerHTML = `
                     <div class="flex justify-between items-center">
                         <h5 class="font-bold text-slate-800 text-xs"><i class="fa-solid fa-table text-blue-600 mr-2"></i> ${schema.name}</h5>
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded text-[10px] font-bold">${data.length} Entri</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full text-[10px] font-bold">${data.length} Entri</span>
                     </div>
                     ${rowsHtml}
                 `;
@@ -710,6 +832,26 @@
 
         function exportFullMasterExcel() {
             const wb = XLSX.utils.book_new();
+            
+            // Masukkan Biodata Dinas sebagai sheet pertama
+            const dinasWsData = [{
+                "Nama Kepala Dinas / Inspektur": dinasProfile.kepala,
+                "Jabatan Resmi": dinasProfile.jabatan,
+                "Pangkat / Golongan": dinasProfile.pangkat,
+                "Instansi": "INSPEKTORAT Provinsi Sulawesi Tengah"
+            }];
+            const dinasWs = XLSX.utils.json_to_sheet(dinasWsData);
+            XLSX.utils.book_append_sheet(wb, dinasWs, "Biodata_Dinas");
+
+            const credWsData = credentialsSheet.map(c => ({
+                "Username": c.username,
+                "PIN Keamanan": c.pin,
+                "Role / Peran": c.role,
+                "Instansi": c.instansi
+            }));
+            const credWs = XLSX.utils.json_to_sheet(credWsData);
+            XLSX.utils.book_append_sheet(wb, credWs, "Kredensial_Login");
+
             for (const [key, schema] of Object.entries(SHEET_SCHEMAS)) {
                 const data = appDatabase[key] || [];
                 const wsData = data.map((item, idx) => {
@@ -720,14 +862,14 @@
                 const ws = XLSX.utils.json_to_sheet(wsData.length > 0 ? wsData : [{ "Keterangan": "Kosong" }]);
                 XLSX.utils.book_append_sheet(wb, ws, schema.name.substring(0, 31));
             }
-            XLSX.writeFile(wb, "Master_Database_Secure_SIMAR_PD_2026.xlsx");
+            XLSX.writeFile(wb, "Master_Database_E-MANER_2026.xlsx");
         }
 
         function printCurrentFormPDF() {
             const schema = SHEET_SCHEMAS[currentFormKey];
             const dataList = appDatabase[currentFormKey] || [];
             let printWindow = window.open('', '_blank');
-            let html = `<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><title>Cetak</title><style>body{font-family:sans-serif;font-size:11pt;margin:20px}.header{text-align:center;border-bottom:2px solid #333;padding-bottom:10px;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #444;padding:6px 8px;font-size:10pt}th{background:#f0f0f0}.footer{margin-top:40px;float:right;text-align:center}</style></head><body><div class="header"><h3>PEMERINTAH PROVINSI SULAWESI TENGAH</h3><h2>INSPEKTORAT</h2><h3>${schema.name.toUpperCase()}</h3></div><table><thead><tr><th>No</th>`;
+            let html = `<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><title>Cetak Resmi</title><style>body{font-family:sans-serif;font-size:11pt;margin:25px}.header{text-align:center;border-bottom:3px double #333;padding-bottom:12px;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #444;padding:6px 8px;font-size:10pt}th{background:#f0f0f0}.footer{margin-top:40px;float:right;text-align:center}</style></head><body><div class="header"><h3>PEMERINTAH PROVINSI SULAWESI TENGAH</h3><h2>INSPEKTORAT</h2><h3>${schema.name.toUpperCase()}</h3></div><table><thead><tr><th>No</th>`;
             schema.columns.forEach(col => html += `<th>${col.label}</th>`);
             html += `</tr></thead><tbody>`;
             if (dataList.length === 0) {
@@ -739,7 +881,7 @@
                     html += `</tr>`;
                 });
             }
-            html += `</tbody></table><div class="footer"><p>Palu, 03 Agustus 2026</p><p><b>Inspektur Daerah Provinsi Sulawesi Tengah</b></p><br><br><br><p><b>( NAMA INSPEKTUR )</b></p><p>NIP. 19700101 200003 1 003</p></div><script>window.onload=function(){window.print();}<\/script></body></html>`;
+            html += `</tbody></table><div class="footer"><p>Palu, 03 Agustus 2026</p><p><b>${dinasProfile.jabatan}</b></p><br><br><br><p><b>${dinasProfile.kepala}</b></p><p>${dinasProfile.pangkat}</p></div><script>window.onload=function(){window.print();}<\/script></body></html>`;
             printWindow.document.write(html);
             printWindow.document.close();
         }
